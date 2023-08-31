@@ -1,0 +1,16 @@
+<div class="container ">
+  <form (ngSubmit)="onSubmit()">
+    <input type="text" [(ngModel)]="city" name="city" placeholder="Enter city name" required>
+    <button type="submit">Get Weather</button>
+  </form>
+</div>
+
+<div *ngIf="weather" class="container " >
+  <h2>{{ weather.name }}</h2>
+  <p>Temperature: {{ weather.main.temp }} K</p>
+  <p>Humidity: {{ weather.main.humidity }}%</p>
+  <p>Description: {{ weather.weather[0].description }}</p>
+  <img [src]="'https://openweathermap.org/img/w/' + weather.weather[0].icon + '.png'" alt="Weather Icon">
+</div>
+
+<p *ngIf="error" class="error">{{ error }}</p>
